@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: eureka2
+
+
+server:
+  port: 56081 #启动端口
+
+
+eureka:
+  instance:
+    hostname: eureka56081.com
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka56080.com:56080/eureka/,http://eureka56082.com:56082/eureka/

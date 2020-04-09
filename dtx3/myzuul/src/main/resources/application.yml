@@ -1,0 +1,27 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: my-zuul-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka56080.com:56080/eureka/,http://eureka56081.com:56081/eureka/,http://eureka56082.com:56082/eureka/
+  instance:
+    instance-id: gateway-9527.com #eureka在注册表中显示的名称
+    prefer-ip-address: true #显示ip
+
+zuul:
+  prefix: /foldyang
+  ignored-services: "*" #对所有注册中心注册的名称进行忽略
+  routes:
+    mydept.serviceId: back1 #域名映射
+    mydept.path: /mydept/**
+
+info:
+  app.name: back1
+  company.name: www.foldyang.com
+  build.artifactId: "@project.artifactId@"
+  build.version: "@project.version@"
